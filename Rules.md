@@ -1,17 +1,18 @@
-Panduan Pengiriman dan Penarikan Data Menggunakan JSON
+**Panduan Pengiriman dan Penarikan Data Menggunakan JSON**
+
 Berikut adalah panduan untuk pengiriman dan penarikan data menggunakan format JSON pada layanan tertentu.
 
-Pengiriman Data (POST Request)
-1. Authorization
-Gunakan metode otentikasi Basic Authentication.
-Header Authorization: Basic <base64-encoded-credentials>
-2. Endpoint Pengiriman Data
-Gunakan metode HTTP POST.
-Endpoint: http://example.com/api/purchase-order
-3. Header Request
-Atur header Content-Type sebagai application/json.
-Atur header Authorization sesuai dengan metode otentikasi yang telah dijelaskan.
-4. Format Data JSON
+__Pengiriman Data (POST Request)__
+1. **Authorization**
+- Gunakan metode otentikasi Bearer Token.
+- Header Authorization: __Bearer <token>__
+2. **Endpoint Pengiriman Data**
+- Gunakan metode HTTP __POST__.
+- Endpoint: __http://example.com/api/purchase-order__ gunakan endpoint yang sesuai!
+3. **Header Request**
+- Atur header __Content-Type__ sebagai __application/json__.
+- Atur header __Authorization__ sesuai dengan metode otentikasi yang telah dijelaskan.
+4. **Format Data JSON**
 Berikut ini adalah contoh data JSON dan Pastikan data JSON sesuai dengan kebutuhan layanan yang dituju.
 ```
 {
@@ -80,14 +81,30 @@ Berikut ini adalah contoh data JSON dan Pastikan data JSON sesuai dengan kebutuh
   }
 }
 ```
-5. Contoh Request dengan cURL
+5. **Contoh Request dengan cURL**
 ```
-curl -X GET -H "Content-Type: application/json" -H "Authorization: Basic <base64-encoded-credentials>" http://example.com/api/purchase-order/123456
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer <token>" -d '{"PurchaseOrder": {...}}' http://example.com/api/purchase-order
+```
+
+**Penarikan Data (GET Request)**
+1. **Authorization**
+- Gunakan metode otentikasi __Bearer Token__.
+- Header Authorization: __Bearer <token>__
+2. **Endpoint Penarikan Data**
+- Gunakan metode HTTP __GET__.
+- Endpoint: http://example.com/api/purchase-order/{PONumber}
+3. **Header Request**
+Atur header __Content-Type__ sebagai __application/json__.
+Atur header Authorization sesuai dengan metode otentikasi yang telah dijelaskan.
+
+4. **Contoh Request dengan cURL**
+```
+curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer <token>" http://example.com/api/purchase-order/123456
 ```
 
 Catatan:
-Pastikan untuk mengganti <base64-encoded-credentials> dengan kredensial yang sesuai.
-Sesuaikan endpoint dan struktur data JSON dengan spesifikasi layanan yang diintegrasikan.
-Jika terdapat parameter seperti {PONumber}, pastikan untuk menggantinya dengan nilai yang benar.
-Pastikan endpoint dan kredensial sesuai dengan yang diberikan oleh penyedia layanan API.
-Pantau dokumentasi API untuk memastikan bahwa Anda mengikuti aturan dan batasan yang berlaku.
+- Pastikan untuk mengganti __<token>__ dengan token yang sesuai dan sesuaikan endpoint dan struktur data JSON dengan spesifikasi layanan yang diintegrasikan. Jika metode otentikasi atau endpoint berbeda, sesuaikan petunjuk tersebut dengan aturan API yang digunakan.
+- Sesuaikan endpoint dan struktur data JSON dengan spesifikasi layanan yang diintegrasikan.
+- Jika terdapat parameter seperti {PONumber}, pastikan untuk menggantinya dengan nilai yang benar.
+- Pastikan endpoint dan kredensial sesuai dengan yang diberikan oleh penyedia layanan API.
+- Pantau dokumentasi API untuk memastikan bahwa Anda mengikuti aturan dan batasan yang berlaku.
