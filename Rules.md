@@ -92,7 +92,7 @@ curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer <toke
 - Header Authorization: __Bearer <token>__
 2. **Endpoint Penarikan Data**
 - Gunakan metode HTTP __GET__.
-- Endpoint: http://example.com/api/purchase-order/{PONumber}
+- Endpoint: __http://api.panbrothers.co.id/PO__
 3. **Header Request**
 Atur header __Content-Type__ sebagai __application/json__.
 Atur header Authorization sesuai dengan metode otentikasi yang telah dijelaskan.
@@ -100,6 +100,74 @@ Atur header Authorization sesuai dengan metode otentikasi yang telah dijelaskan.
 4. **Contoh Request dengan cURL**
 ```
 curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer <token>" http://example.com/api/purchase-order/123456
+```
+5. **Data JSON yang akan kamu terima**
+```
+{
+  "PurchaseOrder": {
+    "POPurpose": "PO Creation",
+    "PONumber": "123456",
+    "POVersionNumber": "1",
+    "POResponseVersionNumber": "0",
+    "messageGenerationDateTime": "2024-01-08T12:00:00",
+    "latestUpdateDateTime": "2024-01-08T12:00:00",
+    "originalPOIssueDate": "2024-01-01",
+    "currency": "USD",
+    "paymentTerms": "TT60",
+    "headerRemarks": "This is a sample remark",
+    "sender": {
+      "senderName": "PT. PRIMA SEJATI SEJAHTERA",
+      "senderPerson": "John Doe"
+    },
+    "recipient": "Vendor XYZ",
+    "buyer": {
+      "buyerName": "Company ABC",
+      "buyerAddressLine1": "123 Main Street",
+      "buyerCountryCode": "ID",
+      "buyerContactEmail": "buyer@example.com"
+    },
+    "sellerName": "Vendor XYZ",
+    "actualManufacturer": {
+      "actualManufacturerCode": "123",
+      "actualManufacturerName": "Vendor XYZ",
+      "actualManufacturerAddressLine1": "456 Manufacturer Street",
+      "actualManufacturerCountryCode": "US"
+    },
+    "shipTo": {
+      "shipToCode": "789",
+      "shipToName": "Ship To XYZ",
+      "shipToAddressLine1": "789 Shipping Street"
+    },
+    "T1Customer": "GroupMkt123",
+    "headerExtension": null,
+    "lineItems": [
+      {
+        "lineItemNumber": 1,
+        "adidasOrderNumber": "A123",
+        "adidasArticleNumber": "ART-456",
+        "adidasWorkingNumber": "WORK-789",
+        "requestDate": "2024-01-15",
+        "adidasRequestDate": "2024-01-10",
+        "adidasPlanDate": "2024-01-20",
+        "priorityAndOrderType": "High - Retail",
+        "orderQty": 100,
+        "orderUOM": "PCS",
+        "season": "Spring",
+        "materialReferenceNumber": "MAT-123",
+        "materialDescriptor": {
+          "materialDescription": "Sample Material",
+          "materialColor": "Blue"
+        },
+        "unitPrice": 10.50,
+        "lineExtension1": null,
+        "lineExtension2": "Additional Info",
+        "lineExtension3": null,
+        "lineExtension4": null,
+        "lineExtension5": null
+      }
+    ]
+  }
+}
 ```
 
 Catatan:
